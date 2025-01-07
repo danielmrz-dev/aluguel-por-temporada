@@ -3,18 +3,82 @@
     
     <p class="register-form__subtitle">Preencha seus dados para continuar</p>
     <form [formGroup]="userRegisterForm" class="register-form__form">
-        <mat-stepper orientation="vertical" class="register-form__stepper">
+        <mat-stepper [orientation]="stepperOrientation" class="register-form__stepper">
             <mat-step label="Informações Gerais" class="register-form__step">
                 <div class="register-form__fields-container">
                     <mat-form-field appearance="outline" class="register-form__form-field">
+                        <mat-label>CPF</mat-label>
+                        <input type="text" matInput formControlName="cpf" class="register-form__form-input">
+                        <mat-error>O <strong>CPF</strong> é obrigatório</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="register-form__form-field">
                         <mat-label>Nome</mat-label>
-                        <input type="text" matInput formControlName="nome" class="register-form__form-input">
+                        <input type="text" matInput formControlName="name" class="register-form__form-input">
                         <mat-error>O <strong>nome</strong> é obrigatório</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="register-form__form-field">
                         <mat-label>Sobrenome</mat-label>
-                        <input type="text" matInput formControlName="sobrenome" class="register-form__form-input">
+                        <input type="text" matInput formControlName="lastName" class="register-form__form-input">
                         <mat-error>O <strong>sobrenome</strong> é obrigatório</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="register-form__form-field">
+                        <mat-label>Email</mat-label>
+                        <input type="text" matInput formControlName="email" class="register-form__form-input">
+                        <mat-error>O <strong>email</strong> é obrigatório</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="register-form__form-field">
+                        <mat-label>Telefone</mat-label>
+                        <input type="text" matInput formControlName="phoneNumber" class="register-form__form-input">
+                        <mat-error>O <strong>telefone</strong> é obrigatório</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="register-form__form-field">
+                        <mat-label>Data de nascimento</mat-label>
+                        <input type="text" matInput formControlName="birthDate" class="register-form__form-input">
+                        <mat-error>A <strong>data de nascimento</strong> é obrigatória</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="register-form__form-field">
+                        <mat-label>Host</mat-label>
+                        <input type="text" matInput formControlName="host" class="register-form__form-input">
+                        <mat-error>A <strong>Host</strong> é obrigatória</mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-step>
+            <mat-step label="Endereço" class="register-form__step">
+                <div class="register-form__fields-container" formGroupName="address">
+                    <mat-form-field appearance="outline" class="register-form__form-field">
+                        <mat-label>CEP</mat-label>
+                        <input type="text" matInput formControlName="cep" class="register-form__form-input">
+                        <mat-error>O <strong>CEP</strong> é obrigatório</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="register-form__form-field">
+                        <mat-label>Logradouro</mat-label>
+                        <input type="text" matInput formControlName="logradouro" class="register-form__form-input">
+                        <mat-error>O <strong>logradouro</strong> é obrigatório</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="register-form__form-field">
+                        <mat-label>Número</mat-label>
+                        <input type="text" matInput formControlName="numero" class="register-form__form-input">
+                        <mat-error>O <strong>número</strong> é obrigatório</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="register-form__form-field">
+                        <mat-label>Complemento</mat-label>
+                        <input type="text" matInput formControlName="complemento" class="register-form__form-input">
+                        <mat-error>O <strong>complemento</strong> é obrigatório</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="register-form__form-field">
+                        <mat-label>Bairro</mat-label>
+                        <input type="text" matInput formControlName="bairro" class="register-form__form-input">
+                        <mat-error>O <strong>bairro</strong> é obrigatório</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="register-form__form-field">
+                        <mat-label>Localidade</mat-label>
+                        <input type="text" matInput formControlName="localidade" class="register-form__form-input">
+                        <mat-error>A <strong>localidade</strong> é obrigatória</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="register-form__form-field">
+                        <mat-label>UF</mat-label>
+                        <input type="text" matInput formControlName="uf" class="register-form__form-input">
+                        <mat-error>A <strong>UF</strong> é obrigatória</mat-error>
                     </mat-form-field>
                 </div>
             </mat-step>
