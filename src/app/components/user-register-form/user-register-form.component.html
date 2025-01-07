@@ -1,0 +1,23 @@
+<section class="register-form">
+    <h1 class="register-form__title">Formulário de cadastro</h1>
+    
+    <p class="register-form__subtitle">Preencha seus dados para continuar</p>
+    <form [formGroup]="userRegisterForm" class="register-form__form">
+        <mat-stepper orientation="vertical" class="register-form__stepper">
+            <mat-step label="Informações Gerais" class="register-form__step">
+                <div class="register-form__fields-container">
+                    <mat-form-field appearance="outline" class="register-form__form-field">
+                        <mat-label>Nome</mat-label>
+                        <input type="text" matInput formControlName="nome" class="register-form__form-input">
+                        <mat-error>O <strong>nome</strong> é obrigatório</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="register-form__form-field">
+                        <mat-label>Sobrenome</mat-label>
+                        <input type="text" matInput formControlName="sobrenome" class="register-form__form-input">
+                        <mat-error>O <strong>sobrenome</strong> é obrigatório</mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-step>
+        </mat-stepper>
+    </form>
+</section>

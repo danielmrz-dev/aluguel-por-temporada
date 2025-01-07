@@ -1,0 +1,21 @@
+@use "./variables" as var;
+
+.mat-step-icon-selected {
+    background-color: transparent !important;
+    border: 2px solid var.$Dark-blue;
+    & > * {
+        color: var.$Dark-blue;
+    }
+}
+
+.mat-step-icon-state-edit {
+    background-color: var.$Dark-blue !important;
+    border: 2px solid var.$Dark-blue;
+    & > * {
+        color: white;
+    }
+}
+
+.mat-vertical-content {
+    margin-top: 2px;
+}
