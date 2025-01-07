@@ -2,13 +2,13 @@
     <h1 class="register-form__title">Formulário de cadastro</h1>
     
     <p class="register-form__subtitle">Preencha seus dados para continuar</p>
-    <form [formGroup]="userRegisterForm" class="register-form__form">
+    <form [formGroup]="userRegisterForm" class="register-form__form" (submit)="onSubmit()">
         <mat-stepper [orientation]="stepperOrientation" class="register-form__stepper">
-            <mat-step label="Informações Gerais" class="register-form__step">
+            <mat-step [stepControl]="userRegisterForm" label="Informações Gerais" class="register-form__step" errorMessage="Preencha todos os campos">
                 <div class="register-form__fields-container">
                     <mat-form-field appearance="outline" class="register-form__form-field">
                         <mat-label>CPF</mat-label>
-                        <input type="text" matInput formControlName="cpf" class="register-form__form-input">
+                        <input type="text" matInput formControlName="cpf" class="register-form__form-input" mask="000.000.000-00">
                         <mat-error>O <strong>CPF</strong> é obrigatório</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="register-form__form-field">
@@ -23,17 +23,19 @@
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="register-form__form-field">
                         <mat-label>Email</mat-label>
-                        <input type="text" matInput formControlName="email" class="register-form__form-input">
+                        <input type="email" matInput formControlName="email" class="register-form__form-input">
                         <mat-error>O <strong>email</strong> é obrigatório</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="register-form__form-field">
                         <mat-label>Telefone</mat-label>
-                        <input type="text" matInput formControlName="phoneNumber" class="register-form__form-input">
+                        <input type="text" matInput formControlName="phoneNumber" class="register-form__form-input" mask="(00) 00000-0000" maxlength="15">
                         <mat-error>O <strong>telefone</strong> é obrigatório</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="register-form__form-field">
                         <mat-label>Data de nascimento</mat-label>
-                        <input type="text" matInput formControlName="birthDate" class="register-form__form-input">
+                        <input matInput [matDatepicker]="dp" formControlName="birthDate" class="register-form__form-input" readonly>
+                        <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+                        <mat-datepicker #dp disabled="false"></mat-datepicker>
                         <mat-error>A <strong>data de nascimento</strong> é obrigatória</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="register-form__form-field">
@@ -41,13 +43,14 @@
                         <input type="text" matInput formControlName="host" class="register-form__form-input">
                         <mat-error>A <strong>Host</strong> é obrigatória</mat-error>
                     </mat-form-field>
+                    <button type="button" mat-raised-button matStepperNext class="register-form__form-step-btn">Próximo</button>
                 </div>
             </mat-step>
-            <mat-step label="Endereço" class="register-form__step">
+            <mat-step [stepControl]="address" label="Endereço" class="register-form__step" errorMessage="Preencha todos os campos">
                 <div class="register-form__fields-container" formGroupName="address">
                     <mat-form-field appearance="outline" class="register-form__form-field">
                         <mat-label>CEP</mat-label>
-                        <input type="text" matInput formControlName="cep" class="register-form__form-input">
+                        <input type="text" matInput formControlName="cep" class="register-form__form-input" mask="00000-000">
                         <mat-error>O <strong>CEP</strong> é obrigatório</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="register-form__form-field">
@@ -80,6 +83,10 @@
                         <input type="text" matInput formControlName="uf" class="register-form__form-input">
                         <mat-error>A <strong>UF</strong> é obrigatória</mat-error>
                     </mat-form-field>
+                    <div class="register-form__form-btns-container">
+                        <button type="button" mat-raised-button matStepperPrevious class="register-form__form-step-btn">Anterior</button>
+                        <button type="submit" mat-raised-button class="register-form__form-step-btn">Enviar</button>
+                    </div>
                 </div>
             </mat-step>
         </mat-stepper>

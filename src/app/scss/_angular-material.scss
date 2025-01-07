@@ -1,5 +1,6 @@
 @use "./variables" as var;
 
+
 .mat-step-icon-selected {
     background-color: transparent !important;
     border: 2px solid var.$Dark-blue;
@@ -17,5 +18,15 @@
 }
 
 .mat-vertical-content {
-    margin-top: 2px;
+    margin-top: 4px;
+}
+
+.mat-horizontal-content-container {
+    padding-top: 10px !important;
+}
+
+.mat-mdc-raised-button:not(:disabled) {
+    background-color: var.$Dark-blue !important;
+    color: white !important;
+    height: 55px;
 }

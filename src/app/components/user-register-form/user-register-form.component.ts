@@ -6,7 +6,11 @@ import { CommonModule } from '@angular/common';
 import { UserRegisterFormController } from './user-register-form-controller';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-
+import { MatButtonModule } from '@angular/material/button';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { provideNgxMask, NgxMaskDirective } from 'ngx-mask'
 
 
 
@@ -18,7 +22,18 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
     MatFormFieldModule, 
     MatInputModule, 
     CommonModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    NgxMaskDirective
+  ],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { showError: true }
+    },
+    provideNativeDateAdapter(),
+    provideNgxMask()
   ],
   templateUrl: './user-register-form.component.html',
   styleUrl: './user-register-form.component.scss'
@@ -32,5 +47,9 @@ export class UserRegisterFormComponent extends UserRegisterFormController {
     this._breakpointObserver.observe([Breakpoints.HandsetPortrait]).subscribe(result => {
       this.stepperOrientation = result.matches ? 'vertical' : 'horizontal';
     });
+  }
+
+  onSubmit() {
+    console.log(this.userRegisterForm.value);
   }
 }
