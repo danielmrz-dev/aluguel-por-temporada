@@ -1,35 +1,18 @@
-.register-form {
+.address-information {
     padding: 1rem .5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    button {
-        width: 125px;
-    }
-    &__title {
-        font-size: 1.75rem;
-    }
-    &__subtitle {
-        font-size: 1rem;
-    }
-    &__step {
-        display: flex;
-        flex-direction: column;
-    }
     &__form-field, &__form-input {
         width: 100%;
     }
     &__form-field {
         padding-bottom: 0.5rem;
     }
-    &__fields-container {
-        display: grid;
-        gap: 0.25rem;
-        min-width: 290px;
-    }
-    &__form-step-btn-container {
+    &__form-step-btn {
         justify-self: end;
+        width: 125px;
     }
     &__form-btns-container {
         display: flex;
@@ -38,13 +21,10 @@
 }
 
 @media screen and (min-width: 600px) {
-    .register-form__fields-container {
+    .address-information {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: .5rem 2rem;
         min-width: 600px;
-        &__form-step-btn {
-            font-size: 2rem;
-        }
     }
 }

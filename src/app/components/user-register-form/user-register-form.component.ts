@@ -10,23 +10,24 @@ import { MatButtonModule } from '@angular/material/button';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { provideNgxMask, NgxMaskDirective } from 'ngx-mask'
-
-
+import { provideNgxMask } from 'ngx-mask'
+import { GeneralInformationComponent } from "./general-information/general-information.component";
+import { AddressInformationComponent } from "./address-information/address-information.component";
 
 @Component({
   selector: 'app-user-register-form',
   standalone: true,
   imports: [
-    MatStepperModule, 
-    MatFormFieldModule, 
-    MatInputModule, 
-    CommonModule, 
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    CommonModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatDatepickerModule,
-    NgxMaskDirective
-  ],
+    GeneralInformationComponent,
+    AddressInformationComponent
+],
   providers: [
     {
       provide: STEPPER_GLOBAL_OPTIONS,

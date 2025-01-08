@@ -5,7 +5,7 @@ import { UserRegisterFormComponent } from "./components/user-register-form/user-
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserRegisterFormComponent],
+  imports: [UserRegisterFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

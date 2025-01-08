@@ -1,0 +1,22 @@
+.general-information {
+    padding: 1rem .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &__form-field, &__form-input {
+        width: 100%;
+    }
+    &__form-field {
+        padding-bottom: 0.5rem;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .general-information{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: .5rem 2rem;
+        min-width: 600px;
+    }
+}

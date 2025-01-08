@@ -1,0 +1,39 @@
+<div class="general-information" [formGroup]="userRegisterForm">
+    <mat-form-field appearance="outline" class="general-information__form-field">
+        <mat-label>CPF</mat-label>
+        <input type="text" matInput formControlName="cpf" class="general-information__form-input" mask="000.000.000-00">
+        <mat-error>O <strong>CPF</strong> é obrigatório</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="general-information__form-field">
+        <mat-label>Nome</mat-label>
+        <input type="text" matInput formControlName="name" class="general-information__form-input">
+        <mat-error>O <strong>nome</strong> é obrigatório</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="general-information__form-field">
+        <mat-label>Sobrenome</mat-label>
+        <input type="text" matInput formControlName="lastName" class="general-information__form-input">
+        <mat-error>O <strong>sobrenome</strong> é obrigatório</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="general-information__form-field">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" class="general-information__form-input">
+        <mat-error>O <strong>email</strong> é obrigatório</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="general-information__form-field">
+        <mat-label>Telefone</mat-label>
+        <input type="text" matInput formControlName="phoneNumber" class="general-information__form-input" mask="(00) 00000-0000" maxlength="15">
+        <mat-error>O <strong>telefone</strong> é obrigatório</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="general-information__form-field">
+        <mat-label>Data de nascimento</mat-label>
+        <input matInput [matDatepicker]="dp" formControlName="birthDate" class="general-information__form-input" readonly>
+        <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp disabled="false"></mat-datepicker>
+        <mat-error>A <strong>data de nascimento</strong> é obrigatória</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="general-information__form-field">
+        <mat-label>Host</mat-label>
+        <input type="text" matInput formControlName="host" class="general-information__form-input">
+        <mat-error>A <strong>Host</strong> é obrigatória</mat-error>
+    </mat-form-field>
+</div>
