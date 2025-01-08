@@ -1,10 +1,13 @@
 import { inject } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { CepValidatorService } from "../../validators/cep-validator/cep-validator.service";
+
 
 export class UserRegisterFormController {
 
-    userRegisterForm!: FormGroup
-    private readonly _fb = inject(FormBuilder)
+    userRegisterForm!: FormGroup;
+    private readonly _fb = inject(FormBuilder);
+    private readonly _cepValidator = inject(CepValidatorService);
 
     constructor() {
         this.userRegisterForm = this._fb.group({
@@ -13,16 +16,19 @@ export class UserRegisterFormController {
             lastName: ['Peach', [Validators.required]],
             email: ['pitty-peach@dogs.com', [Validators.required]],
             phoneNumber: ['99999999999', [Validators.required]],
-            birthDate: ['', [Validators.required]],
+            birthDate: [new Date('2019-06-16'), [Validators.required]],
             responsible: ['M', [Validators.required]],
             address: this._fb.group({
-                cep: ['00000000', [Validators.required]],
-                logradouro: ['M', [Validators.required]],
-                numero: ['M', [Validators.required]],
-                complemento: ['M', [Validators.required]],
-                bairro: ['M', [Validators.required]],
-                localidade: ['M', [Validators.required]],
-                uf: ['M', [Validators.required]],
+                cep: ['', {
+                    validators: [Validators.required],
+                    asyncValidators: [this._cepValidator.validate.bind(this._cepValidator)],
+                }],
+                logradouro: ['', [Validators.required]],
+                numero: ['', [Validators.required]],
+                complemento: [''],
+                bairro: ['', [Validators.required]],
+                localidade: ['', [Validators.required]],
+                uf: ['', [Validators.required]],
             }),
         }, { updateOn: 'blur' })
     }

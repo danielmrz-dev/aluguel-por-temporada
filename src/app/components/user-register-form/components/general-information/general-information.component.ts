@@ -27,13 +27,13 @@ import { OnlyLettersValidatorDirective } from '../../../../validators/only-lette
   styleUrl: './general-information.component.scss'
 })
 export class GeneralInformationComponent {
-  @Input({ required: true }) userRegisterForm!: FormGroup
+  @Input({ required: true }) userRegisterForm!: FormGroup;
 
   get cpf(): FormControl {
-    return this.userRegisterForm.get('cpf') as FormControl
+    return this.userRegisterForm.get('cpf') as FormControl;
   }
 
   get email(): FormControl {
-    return this.userRegisterForm.get('email') as FormControl
+    return this.userRegisterForm.get('email') as FormControl;
   }
 }

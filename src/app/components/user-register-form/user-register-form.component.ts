@@ -44,7 +44,7 @@ import { convertDateObjToPtBrDate } from '../../utils/convert-date-obj-to-ptbr-d
 })
 export class UserRegisterFormComponent extends UserRegisterFormController {
   stepperOrientation: 'horizontal' | 'vertical' = 'vertical';
-  private readonly _breakpointObserver = inject(BreakpointObserver)
+  private readonly _breakpointObserver = inject(BreakpointObserver);
 
   constructor() {
     super();
@@ -54,8 +54,8 @@ export class UserRegisterFormComponent extends UserRegisterFormController {
   }
 
   onSubmit() {
-    const newUser: IUser = structuredClone(this.userRegisterForm.value)
-    newUser.birthDate = convertDateObjToPtBrDate(this.birthDate.value)
-    console.log(newUser);    
+    const newUser: IUser = structuredClone(this.userRegisterForm.value);
+    newUser.birthDate = convertDateObjToPtBrDate(this.birthDate.value);
+    console.log(newUser);
   }
 }

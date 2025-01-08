@@ -2,23 +2,14 @@
     <div class="address-information" formGroupName="address">
         <mat-form-field appearance="outline" class="address-information__form-field">
             <mat-label>CEP</mat-label>
-            <input type="text" matInput formControlName="cep" class="address-information__form-input" mask="00000-000">
-            <mat-error>O <strong>CEP</strong> é obrigatório</mat-error>
+            <input type="text" matInput formControlName="cep" class="address-information__form-input" mask="00000-000" (blur)="fullfillAddressOnCepInput($event)" appCepValidator>
+            <mat-error *ngIf="cep.hasError('required')">O <strong>CEP</strong> é obrigatório</mat-error>
+            <mat-error *ngIf="!cep.hasError('required') && cep.hasError('invalidCep')"><strong>CEP</strong> inválido</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" class="address-information__form-field">
             <mat-label>Logradouro</mat-label>
             <input type="text" matInput formControlName="logradouro" class="address-information__form-input">
             <mat-error>O <strong>logradouro</strong> é obrigatório</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="address-information__form-field">
-            <mat-label>Número</mat-label>
-            <input type="text" matInput formControlName="numero" class="address-information__form-input">
-            <mat-error>O <strong>número</strong> é obrigatório</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="address-information__form-field">
-            <mat-label>Complemento</mat-label>
-            <input type="text" matInput formControlName="complemento" class="address-information__form-input">
-            <mat-error>O <strong>complemento</strong> é obrigatório</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" class="address-information__form-field">
             <mat-label>Bairro</mat-label>
@@ -34,6 +25,16 @@
             <mat-label>UF</mat-label>
             <input type="text" matInput formControlName="uf" class="address-information__form-input">
             <mat-error>A <strong>UF</strong> é obrigatória</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="address-information__form-field">
+            <mat-label>Número</mat-label>
+            <input type="text" matInput formControlName="numero" class="address-information__form-input">
+            <mat-error>O <strong>número</strong> é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="address-information__form-field">
+            <mat-label>Complemento</mat-label>
+            <input type="text" matInput formControlName="complemento" class="address-information__form-input">
+            <mat-error>O <strong>complemento</strong> é obrigatório</mat-error>
         </mat-form-field>
     </div>
 </ng-container>
