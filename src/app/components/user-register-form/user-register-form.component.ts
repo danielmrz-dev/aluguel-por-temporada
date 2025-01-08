@@ -13,6 +13,8 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { provideNgxMask } from 'ngx-mask'
 import { GeneralInformationComponent } from './components/general-information/general-information.component';
 import { AddressInformationComponent } from './components/address-information/address-information.component';
+import { IUser } from '../../interfaces/user.interface';
+import { convertDateObjToPtBrDate } from '../../utils/convert-date-obj-to-ptbr-date';
 
 
 @Component({
@@ -52,6 +54,8 @@ export class UserRegisterFormComponent extends UserRegisterFormController {
   }
 
   onSubmit() {
-    console.log(this.userRegisterForm.value);
+    const newUser: IUser = structuredClone(this.userRegisterForm.value)
+    newUser.birthDate = convertDateObjToPtBrDate(this.birthDate.value)
+    console.log(newUser);    
   }
 }

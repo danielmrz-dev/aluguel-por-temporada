@@ -8,14 +8,13 @@ export class UserRegisterFormController {
 
     constructor() {
         this.userRegisterForm = this._fb.group({
-            cpf: [55555555555, { validators: [Validators.required], updateOn: 'blur' }],
-            name: ['D', [Validators.required]],
-            lastName: ['M', [Validators.required]],
-            email: ['M', [Validators.required]],
-            phoneNumber: ['55555555555', [Validators.required]],
-            birthDate: ['', []],
+            cpf: ['26721702070', [Validators.required]],
+            name: ['Pitty', [Validators.required]],
+            lastName: ['Peach', [Validators.required]],
+            email: ['pitty-peach@dogs.com', [Validators.required]],
+            phoneNumber: ['99999999999', [Validators.required]],
+            birthDate: ['', [Validators.required]],
             responsible: ['M', [Validators.required]],
-            host: ['M', [Validators.required]],
             address: this._fb.group({
                 cep: ['00000000', [Validators.required]],
                 logradouro: ['M', [Validators.required]],
@@ -25,10 +24,13 @@ export class UserRegisterFormController {
                 localidade: ['M', [Validators.required]],
                 uf: ['M', [Validators.required]],
             }),
-        })
+        }, { updateOn: 'blur' })
     }
     
     get address(): FormGroup {
         return this.userRegisterForm.get('address') as FormGroup;
+    }
+    get birthDate(): FormControl {
+        return this.userRegisterForm.get('birthDate') as FormControl;
     }
 }

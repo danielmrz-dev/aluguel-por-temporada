@@ -1,13 +1,11 @@
 import { IAddress } from "./address.interface";
 
-export interface User {
+export interface IUser {
     cpf: string;
     name: string;
     lastName: string;
     email: string;
     phoneNumber: string;
     birthDate: string;
-    responsible: boolean;
-    host: boolean;
     address: IAddress;
 }

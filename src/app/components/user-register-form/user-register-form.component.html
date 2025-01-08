@@ -3,7 +3,7 @@
     
     <p class="register-form__subtitle">Preencha seus dados para continuar</p>
     <form [formGroup]="userRegisterForm" class="register-form__form" (submit)="onSubmit()">
-        <mat-stepper [orientation]="stepperOrientation" class="register-form__stepper">
+        <mat-stepper [orientation]="stepperOrientation" class="register-form__stepper" linear="true">
             <mat-step [stepControl]="userRegisterForm" label="Informações Gerais" class="register-form__step" errorMessage="Preencha todos os campos">
                 <app-general-information [userRegisterForm]="userRegisterForm"></app-general-information>
                 <div class="register-form__form-step-btn-container">

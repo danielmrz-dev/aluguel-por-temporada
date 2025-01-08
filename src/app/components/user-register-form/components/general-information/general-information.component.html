@@ -7,18 +7,19 @@
     </mat-form-field>
     <mat-form-field appearance="outline" class="general-information__form-field">
         <mat-label>Nome</mat-label>
-        <input type="text" matInput formControlName="name" class="general-information__form-input">
+        <input type="text" matInput formControlName="name" class="general-information__form-input" appOnlyLettersValidator>
         <mat-error>O <strong>nome</strong> é obrigatório</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline" class="general-information__form-field">
         <mat-label>Sobrenome</mat-label>
-        <input type="text" matInput formControlName="lastName" class="general-information__form-input">
+        <input type="text" matInput formControlName="lastName" class="general-information__form-input" appOnlyLettersValidator>
         <mat-error>O <strong>sobrenome</strong> é obrigatório</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline" class="general-information__form-field">
         <mat-label>Email</mat-label>
-        <input type="email" matInput formControlName="email" class="general-information__form-input">
-        <mat-error>O <strong>email</strong> é obrigatório</mat-error>
+        <input appEmailValidator type="email" matInput formControlName="email" class="general-information__form-input">
+        <mat-error *ngIf="email.hasError('required')">O <strong>email</strong> é obrigatório</mat-error>
+        <mat-error *ngIf="!email.hasError('required') && email.hasError('invalidEmailPattern')"><strong>Email</strong> inválido</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline" class="general-information__form-field">
         <mat-label>Telefone</mat-label>
@@ -31,10 +32,5 @@
         <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
         <mat-datepicker #dp disabled="false"></mat-datepicker>
         <mat-error>A <strong>data de nascimento</strong> é obrigatória</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="general-information__form-field">
-        <mat-label>Host</mat-label>
-        <input type="text" matInput formControlName="host" class="general-information__form-input">
-        <mat-error>A <strong>Host</strong> é obrigatória</mat-error>
     </mat-form-field>
 </div>
