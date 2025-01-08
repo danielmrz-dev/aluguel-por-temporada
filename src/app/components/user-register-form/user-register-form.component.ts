@@ -11,8 +11,9 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { provideNgxMask } from 'ngx-mask'
-import { GeneralInformationComponent } from "./general-information/general-information.component";
-import { AddressInformationComponent } from "./address-information/address-information.component";
+import { GeneralInformationComponent } from './components/general-information/general-information.component';
+import { AddressInformationComponent } from './components/address-information/address-information.component';
+
 
 @Component({
   selector: 'app-user-register-form',

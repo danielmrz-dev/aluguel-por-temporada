@@ -1,8 +1,9 @@
 <div class="general-information" [formGroup]="userRegisterForm">
     <mat-form-field appearance="outline" class="general-information__form-field">
         <mat-label>CPF</mat-label>
-        <input type="text" matInput formControlName="cpf" class="general-information__form-input" mask="000.000.000-00">
-        <mat-error>O <strong>CPF</strong> é obrigatório</mat-error>
+        <input appCpfValidator type="text" matInput formControlName="cpf" class="general-information__form-input" mask="000.000.000-00">
+        <mat-error *ngIf="cpf.hasError('required')">O <strong>CPF</strong> é obrigatório</mat-error>
+        <mat-error *ngIf="!cpf.hasError('required') && cpf.hasError('invalidCpf')"><strong>CPF</strong> inválido</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline" class="general-information__form-field">
         <mat-label>Nome</mat-label>
