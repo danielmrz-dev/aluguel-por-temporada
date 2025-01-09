@@ -17,7 +17,6 @@ export class UserRegisterFormController {
             email: ['pitty-peach@dogs.com', [Validators.required]],
             phoneNumber: ['99999999999', [Validators.required]],
             birthDate: [new Date('2019-06-16'), [Validators.required]],
-            responsible: ['M', [Validators.required]],
             address: this._fb.group({
                 cep: ['', {
                     validators: [Validators.required],

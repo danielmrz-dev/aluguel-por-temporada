@@ -14,7 +14,7 @@
                 <app-address-information [userRegisterForm]="userRegisterForm"></app-address-information>
                 <div class="register-form__form-btns-container">
                     <button type="button" mat-raised-button matStepperPrevious class="register-form__form-step-btn">Anterior</button>
-                    <button type="submit" mat-raised-button class="register-form__form-step-btn">Enviar</button>
+                    <button type="submit" mat-raised-button class="register-form__form-step-btn" [disabled]="userRegisterForm.invalid">Enviar</button>
                 </div>
             </mat-step>
         </mat-stepper>
