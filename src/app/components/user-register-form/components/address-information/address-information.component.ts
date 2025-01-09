@@ -5,6 +5,8 @@ import { MatInputModule } from '@angular/material/input';
 import { NgxMaskDirective } from 'ngx-mask';
 import { ViaCepService } from '../../../../services/viacep.service';
 import { CommonModule } from '@angular/common';
+import { map } from 'rxjs';
+import { disableAddressInputs, enableAddressInputs } from '../../../../utils/enable-and-disable-address-inputs';
 
 @Component({
   selector: 'app-address-information',
@@ -49,18 +51,35 @@ export class AddressInformationComponent {
 
   fullfillAddressOnCepInput(event: Event) {
     const input = event.target as HTMLInputElement;
+
+    if (!input.value) {
+      enableAddressInputs(this.logradouro, this.bairro, this.localidade, this.uf)
+      return;
+    } else if (input.value && input.value.length < 9) {
+      enableAddressInputs(this.logradouro, this.bairro, this.localidade, this.uf);
+      this.cep.setErrors({ invalidCep: true })
+      return;
+    }
+
     this._viacepService.getAddress(input.value).subscribe((response) => {
       if (!response.cep) {
-        console.log(this.cep.errors);        
-      };
-      this.address.patchValue({
-        cep: response.cep,
-        logradouro: response.logradouro,
-        bairro: response.bairro,
-        localidade: response.localidade,
-        uf: response.uf,
-      })
-      
+        this.address.patchValue({
+          logradouro: '',
+          bairro: '',
+          localidade: '',
+          uf: '',
+        })
+        enableAddressInputs(this.logradouro, this.bairro, this.localidade, this.uf);
+      } else {
+        this.address.patchValue({
+          cep: response.cep,
+          logradouro: response.logradouro,
+          bairro: response.bairro,
+          localidade: response.localidade,
+          uf: response.uf,
+        })
+        disableAddressInputs(this.logradouro, this.bairro, this.localidade, this.uf)
+      }
     })
   }
 

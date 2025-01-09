@@ -4,13 +4,13 @@
     <p class="register-form__subtitle">Preencha seus dados para continuar</p>
     <form [formGroup]="userRegisterForm" class="register-form__form" (submit)="onSubmit()">
         <mat-stepper [orientation]="stepperOrientation" class="register-form__stepper">
-            <mat-step [stepControl]="userRegisterForm" label="Informações Gerais" class="register-form__step" errorMessage="Preencha todos os campos">
+            <mat-step label="Informações Gerais" class="register-form__step" errorMessage="Preencha todos os campos">
                 <app-general-information [userRegisterForm]="userRegisterForm"></app-general-information>
                 <div class="register-form__form-step-btn-container">
                     <button type="button" mat-raised-button matStepperNext class="general-information__form-step-btn">Próximo</button>
                 </div>
             </mat-step>
-            <mat-step [stepControl]="address" label="Endereço" class="register-form__step" errorMessage="Preencha todos os campos">
+            <mat-step label="Endereço" class="register-form__step" errorMessage="Preencha todos os campos">
                 <app-address-information [userRegisterForm]="userRegisterForm"></app-address-information>
                 <div class="register-form__form-btns-container">
                     <button type="button" mat-raised-button matStepperPrevious class="register-form__form-step-btn">Anterior</button>

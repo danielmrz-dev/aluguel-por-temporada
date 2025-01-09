@@ -54,7 +54,7 @@ export class UserRegisterFormComponent extends UserRegisterFormController {
   }
 
   onSubmit() {
-    const newUser: IUser = structuredClone(this.userRegisterForm.value);
+    const newUser: IUser = structuredClone(this.userRegisterForm.getRawValue());
     newUser.birthDate = convertDateObjToPtBrDate(this.birthDate.value);
     console.log(newUser);
   }
